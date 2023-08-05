@@ -7,7 +7,7 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 
-typedef GlobalHeadersCallback = Map<String, String> Function();
+typedef GlobalHeadersCallback = Future<Map<String, String>> Function();
 
 String _baseURL = "https://example.com";
 String _defaultError = "Cannot complete your request. Please try again";
@@ -95,7 +95,7 @@ class RestHttp {
     });
 
     if (_globalHeaders != null) {
-      headers.addAll(_globalHeaders!());
+      headers.addAll(await _globalHeaders!());
     }
 
     if (kDebugMode) {

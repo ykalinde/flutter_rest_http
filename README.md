@@ -7,16 +7,21 @@ Simple package to integrate to JSON based rest API
 Run the following command to install the package in your project
 
 ```
-flutter pub get flutter_rest_http
+flutter pub add flutter_rest_http
 ```
 
 ## Usage
 
-### 1. Initialization
+### 1. Import Package
+```dart
+import 'package:flutter_rest_http/flutter_rest_http.dart';
+```
+
+### 2. Initialization
 
 In your main method in `lib/main.dart` add the following block
 
-```
+```dart
 void main(){
     RestHttp.init(
         baseURL: "https://jsonplaceholder.typicode.com/"
@@ -25,25 +30,30 @@ void main(){
 
 ```
 
-### 2. Make GET Request
+### 3. Make GET Request
 
-```
-RestHttp.get("posts").then((res) {
+```dart
+void getPosts(){
+  RestHttp.get("posts").then((res) {
     //handle response
-}).catchError((err, stack) {
-   //handle errors
-});
+  }).catchError((err, stack) {
+    //handle errors
+  });
+}
 ```
 
-### 3. Make POST Request
+### 4. Make POST Request
 
-```
-RestHttp.post("posts", params: {
+```dart
+void createPost(){
+  RestHttp.post("posts", params: {
     "title": "New post",
     "body": "Post description body"
-}).then((res) {
+  }).then((res) {
     //handle response
-}).catchError((err, stack) {
-   //handle errors
-});
+  }).catchError((err, stack) {
+    //handle errors
+  });
+}
+
 ```

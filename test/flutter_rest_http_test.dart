@@ -2,20 +2,16 @@ import 'package:flutter_test/flutter_test.dart';
 
 import 'package:flutter_rest_http/flutter_rest_http.dart';
 
-void main() {
-  test('adds one to input values', () {
+void main()  {
+  test('adds one to input values', ()async {
     RestHttp.init(
-      baseURL: "https://google.com/",
-      globalHeaders: () {
+      baseURL: "https://jsonplaceholder.typicode.com/",
+      globalHeaders: () async {
         return {"Authorization": "Bearer 123"};
       },
     );
 
-    RestHttp.get("hello");
-    expect(true, 2 > 1);
-
-    // expect(calculator.addOne(2), 3);
-    // expect(calculator.addOne(-7), -6);
-    // expect(calculator.addOne(0), 1);
+    var res = await RestHttp.get("posts/1");
+    expect(200, res.code);
   });
 }
