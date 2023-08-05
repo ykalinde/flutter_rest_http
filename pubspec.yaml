@@ -1,7 +1,6 @@
 name: flutter_rest_http
 description: Easily integrate to json based rest APIs.
 version: 0.0.1
-author: Yamikani Kalinde <yamikanikalinde@gmail.com>
 homepage: https://github.com/ykalinde/flutter_rest_http
 
 environment:
